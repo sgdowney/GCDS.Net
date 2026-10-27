@@ -1,0 +1,82 @@
+﻿@model LoginViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["ChooseLanguage"]
+    </gcds-text>
+</section>
+<section>
+    <gcds-details details-title="@localizer["HelpHeader"]">
+        <gcds-heading tag="h2">
+            @localizer["SinHelpHeading"]
+        </gcds-heading>
+        <gcds-text>
+            @localizer["SinHelpText"]
+        </gcds-text>
+        <gcds-heading tag="h2">
+            @localizer["AccessCodeHelpHeading"]
+        </gcds-heading>
+        <gcds-text>
+            @localizer["AccessCodeHelpText"]
+        </gcds-text>
+        <gcds-text>
+            @localizer["AccessCodeHelpText2"]
+        </gcds-text>
+        <gcds-heading tag="h2">
+            @localizer["ProvinceOfResidenceHelpHeading"]
+        </gcds-heading>
+        <gcds-text>
+            @localizer["ProvinceOfResidenceHelpText"]
+        </gcds-text>
+    </gcds-details>
+</section>
+<section class="mt-300">
+    <form method="post" id="loginForm" name="loginForm" novalidate>
+        <gcds-error-summary heading="@sharedResource["ErrorSummaryHeading"]"></gcds-error-summary>
+        <gcds-input gcds-for="Sin" hint="@localizer["SinHint"].Value" size="9" form="loginForm" type="text"></gcds-input>
+        <gcds-input gcds-for="AccessCode" hint="@localizer["AccessCodeHint"].Value" size="4" form="loginForm" type="password"></gcds-input>
+        @{
+            List<SelectListItem> provinces = new List<SelectListItem>();
+            provinces.Add(new SelectListItem { Text = localizer["Alberta"].Value, Value = "9" });
+            provinces.Add(new SelectListItem { Text = localizer["British Columbia"].Value, Value = "10" });
+            provinces.Add(new SelectListItem { Text = localizer["Manitoba"].Value, Value = "7" });
+            provinces.Add(new SelectListItem { Text = localizer["New Brunswick"].Value, Value = "4" });
+            provinces.Add(new SelectListItem { Text = localizer["Newfoundland and Labrador"].Value, Value = "1" });
+            provinces.Add(new SelectListItem { Text = localizer["Northwest Territories"].Value, Value = "11" });
+            provinces.Add(new SelectListItem { Text = localizer["Nova Scotia"].Value, Value = "3" });
+            provinces.Add(new SelectListItem { Text = localizer["Nunavut"].Value, Value = "13" });
+            provinces.Add(new SelectListItem { Text = localizer["Ontario"].Value, Value = "6" });
+            provinces.Add(new SelectListItem { Text = localizer["Prince Edward Island"].Value, Value = "2" });
+            provinces.Add(new SelectListItem { Text = localizer["Quebec"].Value, Value = "5" });
+            provinces.Add(new SelectListItem { Text = localizer["Saskatchewan"].Value, Value = "8" });
+            provinces.Add(new SelectListItem { Text = localizer["Yukon"].Value, Value = "12" });
+        }
+        <gcds-select default-value="@localizer["ProvinceHint"].Value" gcds-for="ProvinceId" gcds-options="@provinces" form="loginForm"></gcds-select>
+        <input type="hidden" asp-for="HiddenField" />
+        <input type="hidden" asp-for="AnotherHiddenField" />
+        <gcds-input gcds-for="ReadOnlyField" label="@localizer["ReadOnlyFieldLabel"].Value" hint="@localizer["ReadOnlyFieldHint"].Value" readonly disabled type="text"></gcds-input>
+        <gcds-input label="@localizer["UnconnectedFieldLabel"].Value" hint="@localizer["UnconnectedFieldHint"].Value" name="unconnectedField" required input-id="unconnectedField" value="300000000"></gcds-input>
+        <gcds-input gcds-for="RequiredField" label="@localizer["RequiredFieldLabel"].Value" size="12"></gcds-input>
+        <gcds-input gcds-for="EmailAddress" label="@localizer["EmailAddressLabel"].Value" type="email"></gcds-input>
+        <gcds-select gcds-for="EmailAddressType" form="loginForm">
+            <option value="Work">Work</option>
+            <option value="Home">Home</option>
+            <option value="Spam">Spam</option>
+        </gcds-select>
+        <gcds-button button-id="submitButton" value="Continue" type="submit">
+            @localizer["ContinueButtonLabel"]
+        </gcds-button>
+    </form>
+</section>
+
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>
+
+@section HeadScripts {
+    <script src="~/js/validation/SinValidation.js"></script>
+}
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}
+

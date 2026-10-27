@@ -1,0 +1,14 @@
+﻿@using Gcds.Net.TagHelpers
+@using Microsoft.Extensions.Localization
+@using WebAppMvc
+@using WebAppMvc.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Gcds.Net
+@using Gcds.Net.Models
+@using Gcds.Net.Extensions
+@using Gcds.Net.Renderer
+@inject IGcdsRenderer Gcds
+@addTagHelper *, Gcds.Net
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+@inject IStringLocalizer<SharedResource> sharedResource

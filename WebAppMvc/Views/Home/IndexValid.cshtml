@@ -1,0 +1,66 @@
+﻿@model WebAppMvc.Models.LoginViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sin)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sin)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AccessCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvinceId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProvinceId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HiddenField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HiddenField)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AnotherHiddenField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AnotherHiddenField)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadOnlyField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReadOnlyField)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RequiredField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RequiredField)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddressType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddressType)
+        </dd>
+    </dl>
+</section>
