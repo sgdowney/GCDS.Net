@@ -10,7 +10,7 @@ namespace Gcds.Net.AttributeAdapters
         public override void AddValidation(ClientModelValidationContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
-            MergeAttribute(context.Attributes, "required", "required");
+            MergeAttribute(context.Attributes, "required", "true");
         }
 
         public override string GetErrorMessage(ModelValidationContextBase validationContext)

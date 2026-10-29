@@ -25,7 +25,7 @@ namespace Gcds.Net.AttributeAdapters
         public override string GetErrorMessage(ModelValidationContextBase validationContext)
         {
             ArgumentNullException.ThrowIfNull(validationContext);
-            return GetErrorMessage(validationContext.ModelMetadata, validationContext.ModelMetadata.GetDisplayName(), _minLength);
+            return GetErrorMessage(validationContext.ModelMetadata, validationContext.ModelMetadata.GetDisplayName(), Attribute.Length);
 
         }
     }
