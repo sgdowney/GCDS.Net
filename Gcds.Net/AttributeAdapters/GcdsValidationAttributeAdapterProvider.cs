@@ -28,6 +28,18 @@ namespace Gcds.Net.AttributeAdapters
             {
                 attributeAdapter = new GcdsReqularExpressionAttributeAdapter((RegularExpressionAttribute)attribute, stringLocalizer);
             }
+            else if (typeof(LengthAttribute).IsAssignableFrom(type))
+            {
+                attributeAdapter = new GcdsLengthAttributeAdapter((LengthAttribute)attribute, stringLocalizer);
+            }
+            else if (typeof(RangeAttribute).IsAssignableFrom(type))
+            {
+                attributeAdapter = new GcdsRangeAttributeAdapter((RangeAttribute)attribute, stringLocalizer);
+            }
+            else if (typeof(StringLengthAttribute).IsAssignableFrom(type))
+            {
+                attributeAdapter = new GcdsStringLengthAttributeAdapter((StringLengthAttribute)attribute, stringLocalizer);
+            }
             return attributeAdapter;
         }
     }
