@@ -33,7 +33,7 @@
 <section class="mt-300">
     <form method="post" id="loginForm" name="loginForm" novalidate>
         <gcds-error-summary heading="@sharedResource["ErrorSummaryHeading"]"></gcds-error-summary>
-        <gcds-input gcds-for="Sin" hint="@localizer["SinHint"].Value" size="9" form="loginForm" type="text"></gcds-input>
+        <gcds-input gcds-for="Sin" hint="@localizer["SinHint"].Value" size="9" form="loginForm" type="text" inputmode="numeric"></gcds-input>
         <gcds-input gcds-for="AccessCode" hint="@localizer["AccessCodeHint"].Value" size="4" form="loginForm" type="password"></gcds-input>
         @{
             List<SelectListItem> provinces = new List<SelectListItem>();
@@ -54,10 +54,10 @@
         <gcds-select default-value="@localizer["ProvinceHint"].Value" gcds-for="ProvinceId" gcds-options="@provinces" form="loginForm"></gcds-select>
         <input type="hidden" asp-for="HiddenField" />
         <input type="hidden" asp-for="AnotherHiddenField" />
-        <gcds-input gcds-for="ReadOnlyField" label="@localizer["ReadOnlyFieldLabel"].Value" hint="@localizer["ReadOnlyFieldHint"].Value" readonly disabled type="text"></gcds-input>
-        <gcds-input label="@localizer["UnconnectedFieldLabel"].Value" hint="@localizer["UnconnectedFieldHint"].Value" name="unconnectedField" required input-id="unconnectedField" value="300000000"></gcds-input>
+        <gcds-input gcds-for="ReadOnlyField" label="@localizer["ReadOnlyFieldLabel"].Value" hint="@localizer["ReadOnlyFieldHint"].Value" readonly="true" disabled="true" type="text"></gcds-input>
+        <gcds-input label="@localizer["UnconnectedFieldLabel"].Value" hint="@localizer["UnconnectedFieldHint"].Value" name="unconnectedField" required="true" input-id="unconnectedField" value="300000000"></gcds-input>
         <gcds-input gcds-for="RequiredField" label="@localizer["RequiredFieldLabel"].Value" size="12"></gcds-input>
-        <gcds-input gcds-for="EmailAddress" label="@localizer["EmailAddressLabel"].Value" type="email"></gcds-input>
+        <gcds-input gcds-for="EmailAddress" label="@localizer["EmailAddressLabel"].Value" type="email" inputmode="email"></gcds-input>
         <gcds-select gcds-for="EmailAddressType" form="loginForm">
             <option value="Work">Work</option>
             <option value="Home">Home</option>
