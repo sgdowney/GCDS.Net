@@ -20,19 +20,7 @@ namespace Gcds.Net.Renderer
 {
     public class GcdsHtmlGenerator(IAntiforgery antiforgery, IOptions<MvcViewOptions> optionsAccessor, IModelMetadataProvider metadataProvider, IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder, ValidationHtmlAttributeProvider validationAttributeProvider) : DefaultHtmlGenerator(antiforgery, optionsAccessor, metadataProvider, urlHelperFactory, htmlEncoder, validationAttributeProvider), IHtmlGenerator
     {
-        // See: (http://www.w3.org/TR/html5/forms.html#the-input-element)
-        //private static readonly string[] _placeholderInputTypes =
-        //    ["text", "search", "url", "tel", "email", "password", "number"];
-
-        // See: (http://www.w3.org/TR/html5/sec-forms.html#apply)
-        //private static readonly string[] _maxLengthInputTypes =
-        //    ["text", "search", "url", "tel", "email", "password"];
-
-        //private readonly IAntiforgery _antiforgery;
         private readonly IModelMetadataProvider _metadataProvider = metadataProvider;
-        //private readonly IUrlHelperFactory _urlHelperFactory;
-        //private readonly HtmlEncoder _htmlEncoder = htmlEncoder;
-        //private readonly ValidationHtmlAttributeProvider _validationAttributeProvider = validationAttributeProvider;
         private readonly FormInputRenderMode _formInputRenderMode = optionsAccessor.Value.HtmlHelperOptions.FormInputRenderMode;
 
         public override TagBuilder GenerateTextBox(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, string format, object htmlAttributes)
@@ -47,22 +35,6 @@ namespace Gcds.Net.Renderer
             isExplicitValue: true,
             format: format,
             htmlAttributes: htmlAttributeDictionary!);
-
-            //return GenerateInput(
-            //    viewContext,
-            //    InputType.Text,
-            //    modelExplorer,
-            //    expression,
-            //    value,
-            //    useViewData: (modelExplorer == null && value == null),
-            //    isChecked: false,
-            //    setId: true,
-            //    isExplicitValue: true,
-            //    format: format,
-            //    htmlAttributes: htmlAttributeDictionary);
-
-
-
             return tagBuilder;
 
         }
@@ -87,17 +59,7 @@ namespace Gcds.Net.Renderer
         }
 
 
-        protected virtual TagBuilder GenerateGcdsInput(ViewContext viewContext,
-        InputTypeEnum inputType,
-        ModelExplorer modelExplorer,
-        string expression,
-        object value,
-        bool useViewData,
-        bool isChecked,
-        bool setId,
-        bool isExplicitValue,
-        string? format,
-        IDictionary<string, object> htmlAttributes)
+        protected virtual TagBuilder GenerateGcdsInput(ViewContext viewContext, InputTypeEnum inputType, ModelExplorer modelExplorer, string expression, object value, bool useViewData, bool isChecked, bool setId, bool isExplicitValue, string? format, IDictionary<string, object> htmlAttributes)
         {
             ArgumentNullException.ThrowIfNull(viewContext, nameof(viewContext));
 
@@ -119,24 +81,11 @@ namespace Gcds.Net.Renderer
                 tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
             }
             var suppliedTypeString = tagBuilder.Attributes["type"];
-            //if (_placeholderInputTypes.Contains(suppliedTypeString))
-            //{
-            //    AddPlaceholderAttribute(viewContext.ViewData, tagBuilder, modelExplorer, expression);
-            //}
-
-            //if (_maxLengthInputTypes.Contains(suppliedTypeString))
-            //{
-            //    AddMaxLengthAttribute(viewContext.ViewData, tagBuilder, modelExplorer, expression);
-            //}
-
-
-
 
             CultureInfo culture;
             if (ShouldUseInvariantFormattingForInputType(suppliedTypeString!, viewContext.Html5DateRenderingMode))
             {
                 culture = CultureInfo.InvariantCulture;
-                //viewContext.FormContext.InvariantField(fullName, true);
             }
             else
             {
@@ -144,11 +93,9 @@ namespace Gcds.Net.Renderer
             }
 
             var valueParameter = FormatValue(value, format!, culture);
-            //var usedModelState = false;
 
             switch (inputType)
             {
-
                 case InputTypeEnum.password:
                     if (value != null)
                     {
@@ -183,22 +130,6 @@ namespace Gcds.Net.Renderer
                 tagBuilder.MergeAttribute("label", resolvedLabelText);
             }
 
-            // If there are any errors for a named field, we add the CSS attribute.
-            //if (viewContext.ViewData.ModelState.TryGetValue(fullName, out var entry) && entry.Errors.Count > 0)
-            //{
-            //    tagBuilder.AddCssClass(HtmlHelper.ValidationInputCssClassName);
-            //}
-
-            if (CultureInfo.CurrentCulture.ThreeLetterISOLanguageName.Equals("fra", StringComparison.OrdinalIgnoreCase))
-            {
-                tagBuilder.MergeAttribute("lang", "fr");
-            }
-            else
-            {
-                tagBuilder.MergeAttribute("lang", "en");
-            }
-
-
             AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
 
             return tagBuilder;
@@ -230,7 +161,6 @@ namespace Gcds.Net.Renderer
                         nameof(IHtmlHelper<object>.EditorFor),
                         "htmlFieldName"),
                     nameof(expression));
-                //throw new ArgumentException("Name is not valid.");
             }
 
             // If we got a null selectList, try to use ViewData to get the list of items.
@@ -255,14 +185,6 @@ namespace Gcds.Net.Renderer
                 tagBuilder.MergeAttribute("multiple", "multiple");
             }
 
-            // If there are any errors for a named field, we add the css attribute.
-            //if (viewContext.ViewData.ModelState.TryGetValue(fullName, out var entry))
-            //{
-            //    if (entry.Errors.Count > 0)
-            //    {
-            //        tagBuilder.AddCssClass(Microsoft.AspNetCore.Mvc.ViewFeatures.HtmlHelper.ValidationInputCssClassName);
-            //    }
-            //}
             string? labelText = null;
             if (htmlAttributeDictionary!.TryGetValue("label", out var label))
             {
@@ -274,24 +196,13 @@ namespace Gcds.Net.Renderer
                 tagBuilder.MergeAttribute("label", resolvedLabelText);
             }
 
-            if (CultureInfo.CurrentCulture.ThreeLetterISOLanguageName.Equals("fra", StringComparison.OrdinalIgnoreCase))
-            {
-                tagBuilder.MergeAttribute("lang", "fr");
-            }
-            else
-            {
-                tagBuilder.MergeAttribute("lang", "en");
-            }
-
             AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
 
             return tagBuilder;
         }
 
 
-        private static IEnumerable<SelectListItem> GetSelectListItems(
-    ViewContext viewContext,
-    string expression)
+        private static IEnumerable<SelectListItem> GetSelectListItems(ViewContext viewContext, string expression)
         {
             ArgumentNullException.ThrowIfNull(viewContext);
 
