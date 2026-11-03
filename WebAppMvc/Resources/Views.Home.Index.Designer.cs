@@ -331,6 +331,15 @@ namespace WebAppMvc.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Types of email received.
+        /// </summary>
+        internal static string Type_of_Email {
+            get {
+                return ResourceManager.GetString("Type of Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not connected to a model.
         /// </summary>
         internal static string UnconnectedFieldHint {

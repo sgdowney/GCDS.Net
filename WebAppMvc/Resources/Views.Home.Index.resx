@@ -207,6 +207,9 @@
   <data name="SinHint" xml:space="preserve">
     <value>(without spaces or hyphens)</value>
   </data>
+  <data name="Type of Email" xml:space="preserve">
+    <value>Types of email received</value>
+  </data>
   <data name="UnconnectedFieldHint" xml:space="preserve">
     <value>Not connected to a model</value>
   </data>

@@ -37,5 +37,12 @@ namespace WebAppMvc.Models
         [Required]
         [Display(Name = "Address Type")]
         public string? EmailAddressType { get; set; }
+
+        [Required]
+        [Display(Name = "Type of Email")]
+        public List<string> TypesOfEmailReceived { get; set; } = [];
+
+        [Display(Name = "Prefered Type of Email")]
+        public string? PreferedTypeOfEmailReceived { get; set; }
     }
 }

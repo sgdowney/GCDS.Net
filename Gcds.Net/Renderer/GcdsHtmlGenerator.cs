@@ -18,12 +18,12 @@ using System.Text.Encodings.Web;
 
 namespace Gcds.Net.Renderer
 {
-    public class GcdsHtmlGenerator(IAntiforgery antiforgery, IOptions<MvcViewOptions> optionsAccessor, IModelMetadataProvider metadataProvider, IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder, ValidationHtmlAttributeProvider validationAttributeProvider) : DefaultHtmlGenerator(antiforgery, optionsAccessor, metadataProvider, urlHelperFactory, htmlEncoder, validationAttributeProvider), IHtmlGenerator
+    public class GcdsHtmlGenerator(IAntiforgery antiforgery, IOptions<MvcViewOptions> optionsAccessor, IModelMetadataProvider metadataProvider, IUrlHelperFactory urlHelperFactory, HtmlEncoder htmlEncoder, ValidationHtmlAttributeProvider validationAttributeProvider) : DefaultHtmlGenerator(antiforgery, optionsAccessor, metadataProvider, urlHelperFactory, htmlEncoder, validationAttributeProvider), IHtmlGenerator, IGcdsHtmlGenerator
     {
         private readonly IModelMetadataProvider _metadataProvider = metadataProvider;
         private readonly FormInputRenderMode _formInputRenderMode = optionsAccessor.Value.HtmlHelperOptions.FormInputRenderMode;
 
-        public override TagBuilder GenerateTextBox(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, string format, object htmlAttributes)
+        public override TagBuilder GenerateTextBox(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, string? format, object htmlAttributes)
         {
             ArgumentNullException.ThrowIfNull(viewContext, nameof(viewContext));
 
@@ -39,7 +39,7 @@ namespace Gcds.Net.Renderer
 
         }
 
-        public override TagBuilder GeneratePassword(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, object htmlAttributes)
+        public override TagBuilder GeneratePassword(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object? value, object htmlAttributes)
         {
             ArgumentNullException.ThrowIfNull(viewContext);
 
@@ -59,7 +59,7 @@ namespace Gcds.Net.Renderer
         }
 
 
-        protected virtual TagBuilder GenerateGcdsInput(ViewContext viewContext, InputTypeEnum inputType, ModelExplorer modelExplorer, string expression, object value, bool useViewData, bool isChecked, bool setId, bool isExplicitValue, string? format, IDictionary<string, object> htmlAttributes)
+        protected virtual TagBuilder GenerateGcdsInput(ViewContext viewContext, InputTypeEnum inputType, ModelExplorer modelExplorer, string expression, object? value, bool useViewData, bool isChecked, bool setId, bool isExplicitValue, string? format, IDictionary<string, object> htmlAttributes)
         {
             ArgumentNullException.ThrowIfNull(viewContext, nameof(viewContext));
 
@@ -140,7 +140,7 @@ namespace Gcds.Net.Renderer
         public override TagBuilder GenerateSelect(
             ViewContext viewContext,
             ModelExplorer modelExplorer,
-            string optionLabel,
+            string? optionLabel,
             string expression,
             IEnumerable<SelectListItem> selectList,
             ICollection<string> currentValues,
@@ -199,6 +199,92 @@ namespace Gcds.Net.Renderer
             AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
 
             return tagBuilder;
+        }
+
+        public TagBuilder GenerateCheckboxes(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object htmlAttributes)
+        {
+            ArgumentNullException.ThrowIfNull(viewContext);
+
+            var fullName = GcdsNameAndIdProvider.GetFullHtmlFieldName(viewContext, expression);
+            var htmlAttributeDictionary = GetHtmlAttributeDictionaryOrNull(htmlAttributes);
+            if (!IsFullNameValid(fullName, htmlAttributeDictionary!))
+            {
+                throw new ArgumentException(
+                    ResourceFormat.FormatHtmlGenerator_FieldNameCannotBeNullOrEmpty(
+                        typeof(IHtmlHelper).FullName,
+                        nameof(IHtmlHelper.Editor),
+                        typeof(IHtmlHelper<>).FullName,
+                        nameof(IHtmlHelper<object>.EditorFor),
+                        "htmlFieldName"),
+                    nameof(expression));
+            }
+            modelExplorer ??= ExpressionMetadataProvider.FromStringExpression(expression, viewContext.ViewData, _metadataProvider);
+            var tagBuilder = new TagBuilder("gcds-checkboxes");
+            tagBuilder.MergeAttributes(htmlAttributeDictionary!);
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
+            }
+
+
+            string? legendText = null;
+            if (htmlAttributeDictionary!.TryGetValue("legend", out var label))
+            {
+                legendText = label.ToString()!;
+            }
+            string? resolvedLabelText = ResolveLabelText(legendText, modelExplorer, expression);
+            if (resolvedLabelText != null)
+            {
+                tagBuilder.MergeAttribute("legend", resolvedLabelText);
+            }
+
+            AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
+
+            return tagBuilder;
+
+        }
+
+        public TagBuilder GenerateRadios(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object htmlAttributes)
+        {
+            ArgumentNullException.ThrowIfNull(viewContext);
+
+            var fullName = GcdsNameAndIdProvider.GetFullHtmlFieldName(viewContext, expression);
+            var htmlAttributeDictionary = GetHtmlAttributeDictionaryOrNull(htmlAttributes);
+            if (!IsFullNameValid(fullName, htmlAttributeDictionary!))
+            {
+                throw new ArgumentException(
+                    ResourceFormat.FormatHtmlGenerator_FieldNameCannotBeNullOrEmpty(
+                        typeof(IHtmlHelper).FullName,
+                        nameof(IHtmlHelper.Editor),
+                        typeof(IHtmlHelper<>).FullName,
+                        nameof(IHtmlHelper<object>.EditorFor),
+                        "htmlFieldName"),
+                    nameof(expression));
+            }
+            modelExplorer ??= ExpressionMetadataProvider.FromStringExpression(expression, viewContext.ViewData, _metadataProvider);
+            var tagBuilder = new TagBuilder("gcds-radios");
+            tagBuilder.MergeAttributes(htmlAttributeDictionary!);
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
+            }
+
+
+            string? legendText = null;
+            if (htmlAttributeDictionary!.TryGetValue("legend", out var label))
+            {
+                legendText = label.ToString()!;
+            }
+            string? resolvedLabelText = ResolveLabelText(legendText, modelExplorer, expression);
+            if (resolvedLabelText != null)
+            {
+                tagBuilder.MergeAttribute("legend", resolvedLabelText);
+            }
+
+            AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
+
+            return tagBuilder;
+
         }
 
 
