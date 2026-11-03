@@ -1,4 +1,6 @@
-﻿@model LoginViewModel
+﻿@using System.Text.Json
+
+@model LoginViewModel
 <section>
     <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
     <gcds-text>
@@ -63,6 +65,13 @@
             <option value="Home">Home</option>
             <option value="Spam">Spam</option>
         </gcds-select>
+        @{
+            List<ICheckboxRadioItemModel> checkboxItems = [new CheckboxRadioItemModel { Id = "Work", Label = "Work", Hint = "Work email", Value = "Work"},
+                                                           new CheckboxRadioItemModel { Id = "Home", Label = "Home", Hint = "Personal email", Value="Home"},
+                                                           new CheckboxRadioItemModel { Id = "Spam", Label = "Spam", Value = "Spam"}];
+        }
+        <gcds-checkboxes gcds-for="TypesOfEmailReceived" options="@checkboxItems"></gcds-checkboxes>
+        <gcds-radios gcds-for="PreferedTypeOfEmailReceived" options="@checkboxItems"></gcds-radios>
         <gcds-button button-id="submitButton" value="Continue" type="submit">
             @localizer["ContinueButtonLabel"]
         </gcds-button>

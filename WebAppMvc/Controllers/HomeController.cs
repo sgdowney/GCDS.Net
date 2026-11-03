@@ -30,6 +30,9 @@ namespace WebAppMvc.Controllers
         public IActionResult Index()
         {
             LoginViewModel viewModel = new() { HiddenField = "Hide me!", AnotherHiddenField = "Hide me too!" };
+            //viewModel.TypesOfEmailReceived.Add("Home");
+            //viewModel.TypesOfEmailReceived.Add("Work");
+            viewModel.PreferedTypeOfEmailReceived = "Home";
             ConfigureIndexPage();
             return View(viewModel);
         }

@@ -15,7 +15,7 @@ namespace Gcds.Net.TagHelpers
 {
     [HtmlTargetElement("gcds-select", Attributes = ForAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
     [HtmlTargetElement("gcds-select", Attributes = ItemsAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
-    public class GcdsSelectTagHelper(IHtmlGenerator generator) : TagHelper
+    public class GcdsSelectTagHelper(IGcdsHtmlGenerator generator) : TagHelper
     {
         private const string ForAttributeName = "gcds-for";
         private const string ItemsAttributeName = "gcds-options";
@@ -28,7 +28,7 @@ namespace Gcds.Net.TagHelpers
         /// <summary>
         /// Gets the <see cref="IHtmlGenerator"/> used to generate the <see cref="SelectTagHelper"/>'s output.
         /// </summary>
-        protected IHtmlGenerator Generator { get; } = generator;
+        protected IGcdsHtmlGenerator Generator { get; } = generator;
 
         [HtmlAttributeName("hint")]
         public string? Hint { get; set; }

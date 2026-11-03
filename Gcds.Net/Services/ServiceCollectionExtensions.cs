@@ -12,7 +12,7 @@ namespace Gcds.Net.Services
             services.AddHttpContextAccessor();
             services.TryAdd(ServiceDescriptor.Scoped<IGcDesignModelAccessor, GcDesignModelAccessor>());
             services.AddTransient<IGcdsRenderer, GcdsRenderer>();
-            services.AddTransient<IHtmlGenerator, GcdsHtmlGenerator>();
+            services.AddTransient<IGcdsHtmlGenerator, GcdsHtmlGenerator>();
         }
     }
 }

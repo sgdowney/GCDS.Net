@@ -1,5 +1,6 @@
 ﻿using Gcds.Net.Models;
 using Gcds.Net.Properties;
+using Gcds.Net.Renderer;
 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,7 +12,7 @@ namespace Gcds.Net.TagHelpers
 {
 
     [HtmlTargetElement("gcds-input", Attributes = ForAttributeName, TagStructure = TagStructure.NormalOrSelfClosing)]
-    public class GcdsInputTagHelper(IHtmlGenerator generator) : TagHelper
+    public class GcdsInputTagHelper(IGcdsHtmlGenerator generator) : TagHelper
     {
         private const string ForAttributeName = "gcds-for";
 
@@ -21,7 +22,7 @@ namespace Gcds.Net.TagHelpers
         /// <summary>
         /// Gets the <see cref="IHtmlGenerator"/> used to generate the <see cref="InputTagHelper"/>'s output.
         /// </summary>
-        protected IHtmlGenerator Generator { get; } = generator;
+        protected IGcdsHtmlGenerator Generator { get; } = generator;
 
         [HtmlAttributeNotBound]
         [ViewContext]
