@@ -143,7 +143,7 @@ namespace Gcds.Net.Renderer
             string? optionLabel,
             string expression,
             IEnumerable<SelectListItem> selectList,
-            ICollection<string> currentValues,
+            ICollection<string>? currentValues,
             bool allowMultiple,
             object htmlAttributes)
         {
