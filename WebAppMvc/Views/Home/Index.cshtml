@@ -60,7 +60,7 @@
         <gcds-input label="@localizer["UnconnectedFieldLabel"].Value" hint="@localizer["UnconnectedFieldHint"].Value" name="unconnectedField" required="true" input-id="unconnectedField" value="300000000"></gcds-input>
         <gcds-input gcds-for="RequiredField" label="@localizer["RequiredFieldLabel"].Value" size="12"></gcds-input>
         <gcds-input gcds-for="EmailAddress" label="@localizer["EmailAddressLabel"].Value" type="email" inputmode="email"></gcds-input>
-        <gcds-select gcds-for="EmailAddressType" form="loginForm">
+        <gcds-select gcds-for="EmailAddressType" form="loginForm" default-value="Select address type">
             <option value="Work">Work</option>
             <option value="Home">Home</option>
             <option value="Spam">Spam</option>
