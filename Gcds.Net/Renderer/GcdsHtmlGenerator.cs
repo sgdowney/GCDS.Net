@@ -180,9 +180,14 @@ namespace Gcds.Net.Renderer
                 tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
             }
 
-            if (allowMultiple)
+            //if (allowMultiple)
+            //{
+            //    tagBuilder.MergeAttribute("multiple", "multiple");
+            //}
+
+            if (currentValues != null)
             {
-                tagBuilder.MergeAttribute("multiple", "multiple");
+                tagBuilder.Attributes.Add("value", currentValues.FirstOrDefault());
             }
 
             string? labelText = null;
