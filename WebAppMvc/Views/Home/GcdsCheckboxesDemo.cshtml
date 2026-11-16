@@ -1,0 +1,28 @@
+﻿@model WebAppMvc.Models.GcdsCheckboxesViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["PageText"]
+    </gcds-text>
+</section>
+<section class="mt-300">
+    <form method="post" id="inputForm" name="inputForm" novalidate>
+        <gcds-error-summary heading="@sharedResource["ErrorSummaryHeading"]"></gcds-error-summary>
+        @{
+            List<ICheckboxRadioItemModel> seasonRadioItems = [new CheckboxRadioItemModel { Id = "Winter", Label = localizer["WinterLabel"].Value, Hint = localizer["WinterHint"].Value, Value = "Winter"},
+        new CheckboxRadioItemModel { Id = "Spring", Label = localizer["SpringLabel"].Value, Hint = localizer["SpringHint"].Value, Value="Spring"},
+        new CheckboxRadioItemModel { Id = "Summer", Label = localizer["SummerLabel"].Value, Hint = localizer["SummerHint"].Value, Value="Summer"},
+        new CheckboxRadioItemModel { Id = "Fall", Label = localizer["FallLabel"].Value, Hint = localizer["FallHint"].Value, Value = "Fall"}];
+        }
+        <gcds-checkboxes gcds-for="FavouriteSeasons" options="@seasonRadioItems"></gcds-checkboxes>
+        <gcds-checkboxes gcds-for="LeastFavouriteSeasons" options="@seasonRadioItems"></gcds-checkboxes>
+        <gcds-checkboxes gcds-for="FavouriteSeasonsPreselected" options="@seasonRadioItems"></gcds-checkboxes>
+        <gcds-checkboxes gcds-for="LeastFavouriteSeasonsPreselected" options="@seasonRadioItems"></gcds-checkboxes>
+        <gcds-button button-id="submitButton" value="Continue" type="submit">
+            @localizer["ContinueButtonLabel"]
+        </gcds-button>
+    </form>
+</section>
+
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

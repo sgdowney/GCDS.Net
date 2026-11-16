@@ -8,57 +8,154 @@ using Microsoft.Extensions.Localization;
 using System.Diagnostics;
 
 using WebAppMvc.Models;
-using WebAppMvc.Resources;
 
 namespace WebAppMvc.Controllers
 {
     [GcDesignModelActionFilter]
-    public class HomeController : Controller
+    [AutoValidateAntiforgeryToken]
+    public class HomeController(IGcDesignModelAccessor accessor, IStringLocalizer<SharedResource> sharedLocalizer, IStringLocalizer<HomeController> localizer) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IGcDesignModelAccessor _accessor;
-        private readonly IStringLocalizer<SharedResource> _sharedLocalizer;
-
-        public HomeController(ILogger<HomeController> logger, IGcDesignModelAccessor accessor, IStringLocalizer<SharedResource> sharedLocalizer)
-        {
-            _logger = logger;
-            _accessor = accessor;
-            _sharedLocalizer = sharedLocalizer;
-        }
-
         [HttpGet]
         public IActionResult Index()
         {
-            LoginViewModel viewModel = new() { HiddenField = "Hide me!", AnotherHiddenField = "Hide me too!" };
-            //viewModel.TypesOfEmailReceived.Add("Home");
-            //viewModel.TypesOfEmailReceived.Add("Work");
-            viewModel.PreferedTypeOfEmailReceived = "Home";
             ConfigureIndexPage();
-            return View(viewModel);
+            return View();
         }
 
-        [HttpPost]
-        public IActionResult Index(LoginViewModel viewModel)
-        {
-            ConfigureIndexPage();
-            if (ModelState.IsValid)
-            {
-                return View("IndexValid", viewModel);
-            }
-            return View(viewModel);
-        }
 
         private void ConfigureIndexPage()
         {
-            IGcDesignModel model = _accessor.GcModel;
-
+            IGcDesignModel model = accessor.GcModel;
+            model.Header.PageTitle = sharedLocalizer["ApplicationTitle"];
+            model.Header.LanguageHref = $"?culture={sharedLocalizer["LanguageSwitch"]}";
+            model.Header.ShowSearch = true;
+            model.Header.ShowBreadcrumbs = true;
+            model.Header.SkipToHref = "#main-content";
+            model.Footer.Display = FooterDisplay.compact;
             model.Footer.SubLinks.Add("Terms and conditions", "https://www.canada.ca/en/transparency/terms.html");
             model.Footer.SubLinks.Add("Privacy", "https://www.canada.ca/en/transparency/privacy.html");
-            model.Header.PageTitle = _sharedLocalizer["ApplicationTitle"];
-            model.Header.LanguageHref = $"?culture={_sharedLocalizer["LanguageSwitch"]}";
+        }
+
+        [HttpGet]
+        public IActionResult DefaultHeaderFooter()
+        {
+            IGcDesignModel model = accessor.GcModel;
+            model.Header.PageTitle = sharedLocalizer["ApplicationTitle"];
+            model.Header.LanguageHref = $"?culture={sharedLocalizer["LanguageSwitch"]}";
+            model.Header.ShowSearch = true;
+            model.Header.ShowBreadcrumbs = true;
+            model.Header.Breadcrumbs.Add(new BreadcrumbItemModel { LinkText = localizer["BreadcrumbHome"], Href = "/" });
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult CompactFooter()
+        {
+            //IGcDesignModel model = accessor.GcModel;
+            //model.Header.PageTitle = sharedLocalizer["ApplicationTitle"];
+            //model.Header.LanguageHref = $"?culture={sharedLocalizer["LanguageSwitch"]}";
+            //model.Header.ShowSearch = true;
+            //model.Header.ShowBreadcrumbs = true;
+            //model.Header.SkipToHref = "#main-content";
+            //model.Header.Breadcrumbs.Add(new BreadcrumbItemModel { LinkText = localizer["BreadcrumbHome"], Href = "/" });
+            //model.Footer.Display = FooterDisplay.compact;
+            //model.Footer.SubLinks.Add("Terms and conditions", "https://www.canada.ca/en/transparency/terms.html");
+            //model.Footer.SubLinks.Add("Privacy", "https://www.canada.ca/en/transparency/privacy.html");
+            ConfigureCompactFooter();
+            return View();
+        }
+
+        private void ConfigureCompactFooter()
+        {
+            IGcDesignModel model = accessor.GcModel;
+            model.Header.PageTitle = sharedLocalizer["ApplicationTitle"];
+            model.Header.LanguageHref = $"?culture={sharedLocalizer["LanguageSwitch"]}";
+            model.Header.ShowSearch = true;
+            model.Header.ShowBreadcrumbs = true;
+            model.Header.SkipToHref = "#main-content";
+            model.Header.Breadcrumbs.Add(new BreadcrumbItemModel { LinkText = localizer["BreadcrumbHome"], Href = "/" });
+            model.Footer.Display = FooterDisplay.compact;
+            model.Footer.SubLinks.Add("Terms and conditions", "https://www.canada.ca/en/transparency/terms.html");
+            model.Footer.SubLinks.Add("Privacy", "https://www.canada.ca/en/transparency/privacy.html");
         }
 
 
+        [HttpGet]
+        public IActionResult GcdsInputDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsInputViewModel model = new() { PrefilledField = "Some prefilled text." };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsInputDemo(GcdsInputViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsInputDemoValid", model);
+            }
+            return View(model);
+
+        }
+
+        [HttpGet]
+        public IActionResult GcdsRadiosDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsRadiosViewModel model = new() { FavouriteSeasonPreselected = "Summer", LeastFavouriteSeasonPreselected = "Winter" };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsRadiosDemo(GcdsRadiosViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsRadiosDemoValid", model);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult GcdsCheckboxesDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsCheckboxesViewModel model = new() { FavouriteSeasonsPreselected = ["Summer"], LeastFavouriteSeasonsPreselected = ["Winter", "Fall"] };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsCheckboxesDemo(GcdsCheckboxesViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsCheckboxesDemoValid", model);
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult GcdsSelectDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsSelectViewModel model = new() { ProvinceOfWork = "3" };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsSelectDemo(GcdsSelectViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsSelectDemoValid", model);
+            }
+            return View(model);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

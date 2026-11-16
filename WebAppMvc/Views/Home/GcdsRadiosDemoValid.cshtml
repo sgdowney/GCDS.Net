@@ -1,0 +1,37 @@
+﻿@model WebAppMvc.Models.GcdsRadiosViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.FavouriteSeason)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FavouriteSeason)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeastFavouriteSeason)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeastFavouriteSeason)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FavouriteSeasonPreselected)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FavouriteSeasonPreselected)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeastFavouriteSeasonPreselected)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeastFavouriteSeasonPreselected)
+        </dd>
+    </dl>
+</section>
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

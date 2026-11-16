@@ -117,10 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FormValidMessage" xml:space="preserve">
-    <value>The form was completed successfully.</value>
+  <data name="ContinueButtonLabel" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="FallHint" xml:space="preserve">
+    <value>Raking leaves</value>
+  </data>
+  <data name="FallLabel" xml:space="preserve">
+    <value>Fall</value>
   </data>
   <data name="HeadingText" xml:space="preserve">
-    <value>Login</value>
+    <value>GCDS-RADIOS Demo</value>
+  </data>
+  <data name="PageText" xml:space="preserve">
+    <value>Examples of &amp;lt;gcds-radios&amp;gt; tags linked to properties of a View Model and configured by Validation Attributes applied to the model.</value>
+  </data>
+  <data name="SpringHint" xml:space="preserve">
+    <value>Planting gardens</value>
+  </data>
+  <data name="SpringLabel" xml:space="preserve">
+    <value>Spring</value>
+  </data>
+  <data name="SummerHint" xml:space="preserve">
+    <value>Beach weather</value>
+  </data>
+  <data name="SummerLabel" xml:space="preserve">
+    <value>Summer</value>
+  </data>
+  <data name="WinterHint" xml:space="preserve">
+    <value>Snowy and cold</value>
+  </data>
+  <data name="WinterLabel" xml:space="preserve">
+    <value>Winter</value>
   </data>
 </root>

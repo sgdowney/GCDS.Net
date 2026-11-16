@@ -1,0 +1,35 @@
+﻿@model WebAppMvc.Models.GcdsInputViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeOfEligibility)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AgeOfEligibility)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PrefilledField)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PrefilledField)
+        </dd>
+    </dl>
+</section>

@@ -1,0 +1,37 @@
+﻿@model WebAppMvc.Models.GcdsCheckboxesViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.FavouriteSeasons)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FavouriteSeasons)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeastFavouriteSeasons)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeastFavouriteSeasons)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FavouriteSeasonsPreselected)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FavouriteSeasonsPreselected)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LeastFavouriteSeasonsPreselected)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LeastFavouriteSeasonsPreselected)
+        </dd>
+    </dl>
+</section>
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

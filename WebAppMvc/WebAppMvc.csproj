@@ -15,10 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GoC.Components.DataAnnotations.Adapters.Net" Version="3.0.4" />
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.8.43" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.12" />
-    <PackageReference Include="NuGet.Packaging" Version="6.12.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.13" />
+    <PackageReference Include="NuGet.Packaging" Version="7.9.0" />
+    <PackageReference Include="NuGet.Protocol" Version="6.12.5" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,38 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\Controllers.HomeController.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Controllers.HomeController.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Models.LoginViewModel.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Models.LoginViewModel.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Views.Home.Index.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Views.Home.Index.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Update="Resources\Controllers.HomeController.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Controllers.HomeController.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Models.LoginViewModel.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Models.LoginViewModel.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\SharedResource.resx">
       <Generator></Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views.Home.DefaultHeaderFooter.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views.Home.Index.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Views.Home.Index.Designer.cs</LastGenOutput>
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 

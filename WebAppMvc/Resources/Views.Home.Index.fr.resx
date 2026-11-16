@@ -117,106 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessCodeHelpHeading" xml:space="preserve">
-    <value>Code d'accès</value>
+  <data name="PageText" xml:space="preserve">
+    <value>Choose a link below to view the component demo. (fr)</value>
   </data>
-  <data name="AccessCodeHelpText" xml:space="preserve">
-    <value>Le code d'accès est le code de quatre chiffres qui vous a été envoyé par la poste peu après que vous avez fait une demande de prestations d'assurance-emploi. Votre code d'accès est votre signature électronique. Votre numéro d'assurance sociale (NAS) et votre code d'accès sont nécessaires chaque fois que vous souhaitez obtenir des renseignements au sujet de votre demande de prestations ou pour remplir votre déclaration.</value>
+  <data name="Compact footer" xml:space="preserve">
+    <value>Compact footer (fr)</value>
   </data>
-  <data name="AccessCodeHelpText2" xml:space="preserve">
-    <value>Le code d'accès sert à vous identifier et à assurer la confidentialité des renseignements fournis. Ne le communiquez à personne, gardez-le en lieu sûr et ne le conservez pas au même endroit que votre NAS. Si vous n'avez pas reçu votre code d'accès, veuillez composer le 1-800-431-5595 du lundi au vendredi pendant les heures d'ouverture pour parler à un agent.</value>
+  <data name="Default header and footer" xml:space="preserve">
+    <value>Default header and footer (fr)</value>
   </data>
-  <data name="AccessCodeHint" xml:space="preserve">
-    <value>Digits seulement.</value>
+  <data name="Gcds-Checkboxes Demo" xml:space="preserve">
+    <value>Gcds-Checkboxes Demo (fr)</value>
   </data>
-  <data name="Alberta" xml:space="preserve">
-    <value>Alberta</value>
+  <data name="Gcds-Input Demo" xml:space="preserve">
+    <value>Gcds-Input Demo (fr)</value>
   </data>
-  <data name="British Columbia" xml:space="preserve">
-    <value>Colombie-Britannique</value>
+  <data name="Gcds-Radios Demo" xml:space="preserve">
+    <value>Gcds-Radios Demo (fr)</value>
   </data>
-  <data name="ChooseLanguage" xml:space="preserve">
-    <value>Vous avez choisi de remplir votre déclaration en français. Veuillez noter que vous ne pourrez pas changer vers l'anglais après que vous aurez débuté votre session en direct. Si vous désirez changer la langue, veuillez le faire maintenant.</value>
-  </data>
-  <data name="ContinueButtonLabel" xml:space="preserve">
-    <value>Page suivante</value>
-  </data>
-  <data name="EmailAddressLabel" xml:space="preserve">
-    <value>Adresse email</value>
+  <data name="Gcds-Select Demo" xml:space="preserve">
+    <value>Gcds-Select Demo (fr)</value>
   </data>
   <data name="HeadingText" xml:space="preserve">
-    <value>Ouverture de session</value>
-  </data>
-  <data name="HelpHeader" xml:space="preserve">
-    <value>Aide pour la page</value>
-  </data>
-  <data name="Manitoba" xml:space="preserve">
-    <value>Manitoba</value>
-  </data>
-  <data name="New Brunswick" xml:space="preserve">
-    <value>Nouveau-Brunswick</value>
-  </data>
-  <data name="Newfoundland and Labrador" xml:space="preserve">
-    <value>Terre-Neuve et Labrador</value>
-  </data>
-  <data name="Northwest Territories" xml:space="preserve">
-    <value>Territoires du Nord-Ouest</value>
-  </data>
-  <data name="Nova Scotia" xml:space="preserve">
-    <value>Nouvelle-Ecosse</value>
-  </data>
-  <data name="Nunavut" xml:space="preserve">
-    <value>Nunavut</value>
-  </data>
-  <data name="Ontario" xml:space="preserve">
-    <value>Ontario</value>
-  </data>
-  <data name="Prince Edward Island" xml:space="preserve">
-    <value>Ile-du-Prince-Edouard</value>
-  </data>
-  <data name="ProvinceHint" xml:space="preserve">
-    <value>Sélectionner votre province</value>
-  </data>
-  <data name="ProvinceOfResidenceHelpHeading" xml:space="preserve">
-    <value>Province de résidence</value>
-  </data>
-  <data name="ProvinceOfResidenceHelpText" xml:space="preserve">
-    <value>Choisissez votre province de résidence actuelle dans la liste des provinces.</value>
-  </data>
-  <data name="Quebec" xml:space="preserve">
-    <value>Québec</value>
-  </data>
-  <data name="ReadOnlyFieldHint" xml:space="preserve">
-    <value>Non modifiable</value>
-  </data>
-  <data name="ReadOnlyFieldLabel" xml:space="preserve">
-    <value>Ne pas toucher.</value>
-  </data>
-  <data name="RequiredFieldLabel" xml:space="preserve">
-    <value>Champ obligatoire</value>
-  </data>
-  <data name="Saskatchewan" xml:space="preserve">
-    <value>Saskatchewan</value>
-  </data>
-  <data name="SinHelpHeading" xml:space="preserve">
-    <value>Numéro d'assurance sociale</value>
-  </data>
-  <data name="SinHelpText" xml:space="preserve">
-    <value>Vous devez fournir un numéro d'assurance sociale valide de neuf chiffres. Veuillez entrer ces neuf chiffres tels qu'ils figurent sur votre carte de numéro d'assurance sociale, sans insérer d'espaces ou de traits d'union.</value>
-  </data>
-  <data name="SinHint" xml:space="preserve">
-    <value>(sans espaces ni traits d'union)</value>
-  </data>
-  <data name="Type of Email" xml:space="preserve">
-    <value>Types of email received (french)</value>
-  </data>
-  <data name="UnconnectedFieldHint" xml:space="preserve">
-    <value>Non lié à un modèle</value>
-  </data>
-  <data name="UnconnectedFieldLabel" xml:space="preserve">
-    <value>Champ non connecté</value>
-  </data>
-  <data name="Yukon" xml:space="preserve">
-    <value>Yukon</value>
+    <value>GCDS Component Demo (fr)</value>
   </data>
 </root>
