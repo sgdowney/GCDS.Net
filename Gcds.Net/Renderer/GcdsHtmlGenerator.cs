@@ -169,7 +169,7 @@ namespace Gcds.Net.Renderer
             modelExplorer ??= ExpressionMetadataProvider.FromStringExpression(expression, viewContext.ViewData, _metadataProvider);
 
             // Convert each ListItem to an <option> tag and wrap them with <optgroup> if requested.
-            var listItemBuilder = GenerateGroupsAndOptions(optionLabel, selectList, currentValues);
+            var listItemBuilder = GenerateGroupsAndOptions(selectList);
 
             var tagBuilder = new TagBuilder("gcds-select");
             tagBuilder.InnerHtml.SetHtmlContent(listItemBuilder);
@@ -433,7 +433,7 @@ namespace Gcds.Net.Renderer
             return false;
         }
 
-        private static string FormatValue(object value, string format, IFormatProvider formatProvider)
+        private static string FormatValue(object? value, string format, IFormatProvider formatProvider)
         {
             if (value == null)
             {
@@ -607,10 +607,127 @@ namespace Gcds.Net.Renderer
             return Convert.ToString(viewContext.ViewData.Eval(key, format), CultureInfo.CurrentCulture)!;
         }
 
-        private static IHtmlContent GenerateGroupsAndOptions(
-            string optionLabel,
-            IEnumerable<SelectListItem> selectList,
-            ICollection<string> currentValues)
+        //private static IHtmlContent GenerateGroupsAndOptions(string optionLabel, IEnumerable<SelectListItem> selectList, ICollection<string> currentValues)
+        //{
+        //    if (selectList is not IList<SelectListItem> itemsList)
+        //    {
+        //        itemsList = selectList.ToList();
+        //    }
+
+        //    var count = itemsList.Count;
+        //    if (optionLabel != null)
+        //    {
+        //        count++;
+        //    }
+
+        //    // Short-circuit work below if there's nothing to add.
+        //    if (count == 0)
+        //    {
+        //        return HtmlString.Empty;
+        //    }
+
+        //    var listItemBuilder = new HtmlContentBuilder(count);
+
+        //    // Make optionLabel the first item that gets rendered.
+        //    if (optionLabel != null)
+        //    {
+        //        listItemBuilder.AppendLine(GenerateOption(
+        //            new SelectListItem()
+        //            {
+        //                Text = optionLabel,
+        //                Value = string.Empty,
+        //                Selected = false,
+        //            },
+        //            currentValues: null));
+        //    }
+
+        //    // Group items in the SelectList if requested.
+        //    // The worst case complexity of this algorithm is O(number of groups*n).
+        //    // If there aren't any groups, it is O(n) where n is number of items in the list.
+        //    var optionGenerated = new bool[itemsList.Count];
+        //    for (var i = 0; i < itemsList.Count; i++)
+        //    {
+        //        if (!optionGenerated[i])
+        //        {
+        //            var item = itemsList[i];
+        //            var optGroup = item.Group;
+        //            if (optGroup != null)
+        //            {
+        //                var groupBuilder = new TagBuilder("optgroup");
+        //                if (optGroup.Name != null)
+        //                {
+        //                    groupBuilder.MergeAttribute("label", optGroup.Name);
+        //                }
+
+        //                if (optGroup.Disabled)
+        //                {
+        //                    groupBuilder.MergeAttribute("disabled", "disabled");
+        //                }
+
+        //                groupBuilder.InnerHtml.AppendLine();
+
+        //                for (var j = i; j < itemsList.Count; j++)
+        //                {
+        //                    var groupItem = itemsList[j];
+
+        //                    if (!optionGenerated[j] &&
+        //                        object.ReferenceEquals(optGroup, groupItem.Group))
+        //                    {
+        //                        groupBuilder.InnerHtml.AppendLine(GenerateOption(groupItem, currentValues));
+        //                        optionGenerated[j] = true;
+        //                    }
+        //                }
+
+        //                listItemBuilder.AppendLine(groupBuilder);
+        //            }
+        //            else
+        //            {
+        //                listItemBuilder.AppendLine(GenerateOption(item, currentValues));
+        //                optionGenerated[i] = true;
+        //            }
+        //        }
+        //    }
+
+        //    return listItemBuilder;
+        //}
+
+        //private static IHtmlContent GenerateOption(SelectListItem item, ICollection<string>? currentValues)
+        //{
+        //    var selected = item.Selected;
+        //    if (currentValues != null)
+        //    {
+        //        var value = item.Value ?? item.Text;
+        //        selected = currentValues.Contains(value);
+        //    }
+
+        //    var tagBuilder = GenerateOption(item, item.Text, selected);
+        //    return tagBuilder;
+        //}
+
+        //internal static TagBuilder GenerateOption(SelectListItem item, string text, bool selected)
+        //{
+        //    var tagBuilder = new TagBuilder("option");
+        //    tagBuilder.InnerHtml.SetContent(text);
+
+        //    if (item.Value != null)
+        //    {
+        //        tagBuilder.Attributes["value"] = item.Value;
+        //    }
+
+        //    if (selected)
+        //    {
+        //        tagBuilder.Attributes["selected"] = "selected";
+        //    }
+
+        //    if (item.Disabled)
+        //    {
+        //        tagBuilder.Attributes["disabled"] = "disabled";
+        //    }
+
+        //    return tagBuilder;
+        //}
+
+        private static IHtmlContent GenerateGroupsAndOptions(IEnumerable<SelectListItem> selectList)
         {
             if (selectList is not IList<SelectListItem> itemsList)
             {
@@ -618,10 +735,6 @@ namespace Gcds.Net.Renderer
             }
 
             var count = itemsList.Count;
-            if (optionLabel != null)
-            {
-                count++;
-            }
 
             // Short-circuit work below if there's nothing to add.
             if (count == 0)
@@ -630,19 +743,6 @@ namespace Gcds.Net.Renderer
             }
 
             var listItemBuilder = new HtmlContentBuilder(count);
-
-            // Make optionLabel the first item that gets rendered.
-            if (optionLabel != null)
-            {
-                listItemBuilder.AppendLine(GenerateOption(
-                    new SelectListItem()
-                    {
-                        Text = optionLabel,
-                        Value = string.Empty,
-                        Selected = false,
-                    },
-                    currentValues: null));
-            }
 
             // Group items in the SelectList if requested.
             // The worst case complexity of this algorithm is O(number of groups*n).
@@ -676,7 +776,7 @@ namespace Gcds.Net.Renderer
                             if (!optionGenerated[j] &&
                                 object.ReferenceEquals(optGroup, groupItem.Group))
                             {
-                                groupBuilder.InnerHtml.AppendLine(GenerateOption(groupItem, currentValues));
+                                groupBuilder.InnerHtml.AppendLine(GenerateOption(groupItem));
                                 optionGenerated[j] = true;
                             }
                         }
@@ -685,7 +785,7 @@ namespace Gcds.Net.Renderer
                     }
                     else
                     {
-                        listItemBuilder.AppendLine(GenerateOption(item, currentValues));
+                        listItemBuilder.AppendLine(GenerateOption(item));
                         optionGenerated[i] = true;
                     }
                 }
@@ -694,14 +794,9 @@ namespace Gcds.Net.Renderer
             return listItemBuilder;
         }
 
-        private static IHtmlContent GenerateOption(SelectListItem item, ICollection<string>? currentValues)
+        private static IHtmlContent GenerateOption(SelectListItem item)
         {
             var selected = item.Selected;
-            if (currentValues != null)
-            {
-                var value = item.Value ?? item.Text;
-                selected = currentValues.Contains(value);
-            }
 
             var tagBuilder = GenerateOption(item, item.Text, selected);
             return tagBuilder;
