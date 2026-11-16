@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationTitle" xml:space="preserve">
-    <value>Service de déclaration par Internet</value>
+    <value>GCDS.Net Demo (fr)</value>
   </data>
   <data name="ErrorSummaryHeading" xml:space="preserve">
     <value>Le formulaire n'a pu être soumis car des erreurs ont été trouvées.</value>

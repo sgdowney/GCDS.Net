@@ -117,106 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AccessCodeHelpHeading" xml:space="preserve">
-    <value>AccessCodeHelpHeading</value>
+  <data name="PageText" xml:space="preserve">
+    <value>Choose a link below to view the component demo.</value>
   </data>
-  <data name="AccessCodeHelpText" xml:space="preserve">
-    <value>AccessCodeHelpText</value>
+  <data name="Compact footer" xml:space="preserve">
+    <value>Compact footer</value>
   </data>
-  <data name="AccessCodeHelpText2" xml:space="preserve">
-    <value>AccessCodeHelpText2</value>
+  <data name="Default header and footer" xml:space="preserve">
+    <value>Default header and footer</value>
   </data>
-  <data name="AccessCodeHint" xml:space="preserve">
-    <value>Digits only.</value>
+  <data name="Gcds-Checkboxes Demo" xml:space="preserve">
+    <value>Gcds-Checkboxes Demo</value>
   </data>
-  <data name="Alberta" xml:space="preserve">
-    <value>Alberta</value>
+  <data name="Gcds-Input Demo" xml:space="preserve">
+    <value>Gcds-Input Demo</value>
   </data>
-  <data name="British Columbia" xml:space="preserve">
-    <value>British Columbia</value>
+  <data name="Gcds-Radios Demo" xml:space="preserve">
+    <value>Gcds-Radios Demo</value>
   </data>
-  <data name="ChooseLanguage" xml:space="preserve">
-    <value>You have chosen to complete your report in English. Please note that you will not be able to change to French once you start.</value>
-  </data>
-  <data name="ContinueButtonLabel" xml:space="preserve">
-    <value>Continue</value>
-  </data>
-  <data name="EmailAddressLabel" xml:space="preserve">
-    <value>Email Address</value>
+  <data name="Gcds-Select Demo" xml:space="preserve">
+    <value>Gcds-Select Demo</value>
   </data>
   <data name="HeadingText" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="HelpHeader" xml:space="preserve">
-    <value>Help for this page</value>
-  </data>
-  <data name="Manitoba" xml:space="preserve">
-    <value>Manitoba</value>
-  </data>
-  <data name="New Brunswick" xml:space="preserve">
-    <value>New Brunswick</value>
-  </data>
-  <data name="Newfoundland and Labrador" xml:space="preserve">
-    <value>Newfoundland and Labrador</value>
-  </data>
-  <data name="Northwest Territories" xml:space="preserve">
-    <value>Northwest Territories</value>
-  </data>
-  <data name="Nova Scotia" xml:space="preserve">
-    <value>Nova Scotia</value>
-  </data>
-  <data name="Nunavut" xml:space="preserve">
-    <value>Nunavut</value>
-  </data>
-  <data name="Ontario" xml:space="preserve">
-    <value>Ontario</value>
-  </data>
-  <data name="Prince Edward Island" xml:space="preserve">
-    <value>Prince Edward Island</value>
-  </data>
-  <data name="ProvinceHint" xml:space="preserve">
-    <value>Select your province</value>
-  </data>
-  <data name="ProvinceOfResidenceHelpHeading" xml:space="preserve">
-    <value>Province of Residence</value>
-  </data>
-  <data name="ProvinceOfResidenceHelpText" xml:space="preserve">
-    <value>ProvinceOfResidenceHelpText</value>
-  </data>
-  <data name="Quebec" xml:space="preserve">
-    <value>Quebec</value>
-  </data>
-  <data name="ReadOnlyFieldHint" xml:space="preserve">
-    <value>Not modifiable</value>
-  </data>
-  <data name="ReadOnlyFieldLabel" xml:space="preserve">
-    <value>Do not touch.</value>
-  </data>
-  <data name="RequiredFieldLabel" xml:space="preserve">
-    <value>Required field</value>
-  </data>
-  <data name="Saskatchewan" xml:space="preserve">
-    <value>Saskatchewan</value>
-  </data>
-  <data name="SinHelpHeading" xml:space="preserve">
-    <value>Social Insurance Number</value>
-  </data>
-  <data name="SinHelpText" xml:space="preserve">
-    <value>SinHelpText</value>
-  </data>
-  <data name="SinHint" xml:space="preserve">
-    <value>(without spaces or hyphens)</value>
-  </data>
-  <data name="Type of Email" xml:space="preserve">
-    <value>Types of email received</value>
-  </data>
-  <data name="UnconnectedFieldHint" xml:space="preserve">
-    <value>Not connected to a model</value>
-  </data>
-  <data name="UnconnectedFieldLabel" xml:space="preserve">
-    <value>Unconnected Field</value>
-  </data>
-  <data name="Yukon" xml:space="preserve">
-    <value>Yukon</value>
+    <value>GCDS Component Demo</value>
   </data>
 </root>

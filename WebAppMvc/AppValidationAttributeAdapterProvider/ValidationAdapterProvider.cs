@@ -1,10 +1,7 @@
 ﻿using Gcds.Net.AttributeAdapters;
 
-using GoC.Components.DataAnnotations.Attributes;
-using GoC.Components.DataAnnotations.Provider;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Options;
 
 using System.ComponentModel.DataAnnotations;
 
@@ -18,18 +15,12 @@ namespace WebAppMvc.AppValidationAttributeAdapterProvider
             IAttributeAdapter? attributeAdapter = gcdsProvider.GetAttributeAdapter(attribute, stringLocalizer);
             if (attributeAdapter == null) 
             {
-                if (attribute.GetType().IsAssignableTo(typeof(SINAttribute)))
-                {
-                    IOptions<WetValidationAttributeAdapterProviderOptions> options = Options.Create(new WetValidationAttributeAdapterProviderOptions { UseWebExperienceToolkit = true });
-                    WetValidationAttributeAdapterProvider gocProvider = new(options);
-                    attributeAdapter = gocProvider.GetAttributeAdapter(attribute, stringLocalizer);
-                }
+                // Provide custom attribute handling for attributes not handled by GcdsValidationAttributeAdapterProvider. 
+                // You can create your own attribute adapters and call them here if needed. This works well for custom
+                // validation attributes that can be mapped to existing GCDS validation attributes.
+                // For example, if you have a custom attribute that is similar to RequiredAttribute, you can create a custom
+                // adapter for it and return it here.
             }
-            //if (attributeAdapter == null)
-            //{
-            //    ValidationAttributeAdapterProvider baseProvider = new();
-            //    attributeAdapter = baseProvider.GetAttributeAdapter(attribute, stringLocalizer);
-            //}
             return attributeAdapter;
         }
     }

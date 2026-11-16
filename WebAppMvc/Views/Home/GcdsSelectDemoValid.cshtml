@@ -1,0 +1,25 @@
+﻿@model WebAppMvc.Models.GcdsSelectViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvinceOfResidence)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProvinceOfResidence)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvinceOfWork)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProvinceOfWork)
+        </dd>
+    </dl>
+</section>
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

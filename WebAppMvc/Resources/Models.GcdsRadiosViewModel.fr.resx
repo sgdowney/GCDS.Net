@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="FormValidMessage" xml:space="preserve">
-    <value>Le formulaire a été rempli avec succès.</value>
+  <data name="FavouriteSeason" xml:space="preserve">
+    <value>Favourite Season (fr)</value>
   </data>
-  <data name="HeadingText" xml:space="preserve">
-    <value>Ouverture de session</value>
+  <data name="FavouriteSeasonPreselected" xml:space="preserve">
+    <value>Favourite Season - Preselected (fr)</value>
+  </data>
+  <data name="LeastFavouriteSeason" xml:space="preserve">
+    <value>Least Favourite Season (fr)</value>
+  </data>
+  <data name="LeastFavouriteSeasonPreselected" xml:space="preserve">
+    <value>Least Favourite Season - Preselected (fr)</value>
   </data>
 </root>

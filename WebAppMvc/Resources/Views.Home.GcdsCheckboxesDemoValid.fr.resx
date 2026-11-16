@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Access Code" xml:space="preserve">
-    <value>Code d'accès</value>
+  <data name="FormValidMessage" xml:space="preserve">
+    <value>Le formulaire a été rempli avec succès.</value>
   </data>
-  <data name="Address Type" xml:space="preserve">
-    <value>Type d'email</value>
-  </data>
-  <data name="Province of Residence" xml:space="preserve">
-    <value>Province de résidence</value>
-  </data>
-  <data name="Social Insurance Number" xml:space="preserve">
-    <value>Numéro d'assurance sociale</value>
+  <data name="HeadingText" xml:space="preserve">
+    <value>&amp;lt;gcds-checkboxes&amp;gt; Demo (fr)</value>
   </data>
 </root>
