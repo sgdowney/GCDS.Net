@@ -157,6 +157,24 @@ namespace WebAppMvc.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult GcdsDateInputDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsDateInputViewModel model = new() { FullDateIsoValuePreFilled = DateTime.Today.ToString("yyyy-MM-dd"), FullDateValuePreFilled = DateTime.Today.ToString("yyyy-MM-dd"), YearMonthValuePreFilled = DateTime.Today.ToString("yyyy-MM") };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsDateInputDemo(GcdsDateInputViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsDateInputDemoValid", model);
+            }
+            return View(model);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

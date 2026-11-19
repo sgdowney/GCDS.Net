@@ -10,5 +10,6 @@ namespace Gcds.Net.Renderer
         new TagBuilder GeneratePassword(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object? value, object htmlAttributes);
         new TagBuilder GenerateSelect(ViewContext viewContext, ModelExplorer modelExplorer, string? optionLabel, string expression, IEnumerable<SelectListItem> selectList, ICollection<string>? currentValues, bool allowMultiple, object htmlAttributes);
         new TagBuilder GenerateTextBox(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, string? format, object htmlAttributes);
+        TagBuilder GenerateDateInput(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, IDictionary<string, object> htmlAttributes);
     }
 }
