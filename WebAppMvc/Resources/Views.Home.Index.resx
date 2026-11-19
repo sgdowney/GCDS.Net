@@ -141,4 +141,7 @@
   <data name="HeadingText" xml:space="preserve">
     <value>GCDS Component Demo</value>
   </data>
+  <data name="Gcds-Date-Input Demo" xml:space="preserve">
+    <value>Gcds-Date-Input Demo</value>
+  </data>
 </root>

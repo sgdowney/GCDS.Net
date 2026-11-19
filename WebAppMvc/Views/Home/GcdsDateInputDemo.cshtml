@@ -1,0 +1,25 @@
+﻿@model WebAppMvc.Models.GcdsDateInputViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["PageText"]
+    </gcds-text>
+</section>
+<section class="mt-300">
+    <form method="post" id="inputForm" name="inputForm" novalidate>
+        <gcds-error-summary heading="@sharedResource["ErrorSummaryHeading"]"></gcds-error-summary>
+        <gcds-date-input gcds-for="FullDateValue" format="full" autocomplete="DateInputAutocomplete.off"></gcds-date-input>
+        <gcds-date-input gcds-for="FullDateValuePreFilled" format="full" autocomplete="DateInputAutocomplete.off"></gcds-date-input>
+        <gcds-date-input gcds-for="FullDateIsoValue" format="iso"></gcds-date-input>
+        <gcds-date-input gcds-for="FullDateIsoValuePreFilled" format="iso"></gcds-date-input>
+        <gcds-date-input gcds-for="YearMonthValue" format="compact"></gcds-date-input>
+        <gcds-date-input gcds-for="YearMonthValuePreFilled" format="compact"></gcds-date-input>
+        <gcds-button button-id="submitButton" value="Continue" type="submit">
+            @localizer["ContinueButtonLabel"]
+        </gcds-button>
+    </form>
+</section>
+
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>
+

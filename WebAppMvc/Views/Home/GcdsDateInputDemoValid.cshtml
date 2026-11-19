@@ -1,0 +1,49 @@
+﻿@model WebAppMvc.Models.GcdsDateInputViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullDateValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullDateValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullDateValuePreFilled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullDateValuePreFilled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearMonthValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearMonthValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearMonthValuePreFilled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearMonthValuePreFilled)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullDateIsoValue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullDateIsoValue)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullDateIsoValuePreFilled)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullDateIsoValuePreFilled)
+        </dd>
+    </dl>
+</section>
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

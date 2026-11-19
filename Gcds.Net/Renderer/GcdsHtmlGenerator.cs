@@ -830,5 +830,58 @@ namespace Gcds.Net.Renderer
             return tagBuilder;
         }
 
+        public TagBuilder GenerateDateInput(ViewContext viewContext, ModelExplorer modelExplorer, string expression, object value, IDictionary<string, object> htmlAttributes)
+        {
+            ArgumentNullException.ThrowIfNull(viewContext, nameof(viewContext));
+
+            var fullName = GcdsNameAndIdProvider.GetFullHtmlFieldName(viewContext, expression);
+
+            if (!IsFullNameValid(fullName, htmlAttributes))
+            {
+                throw new ArgumentException("Name is not valid.");
+            }
+
+            var tagBuilder = new TagBuilder("gcds-date-input");
+
+            tagBuilder.MergeAttributes(htmlAttributes!);
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
+            }
+
+            CultureInfo culture;
+            if (ShouldUseInvariantFormattingForInputType("text", viewContext.Html5DateRenderingMode))
+            {
+                culture = CultureInfo.InvariantCulture;
+            }
+            else
+            {
+                culture = CultureInfo.CurrentCulture;
+            }
+            bool useViewData = false;
+            string format = "";
+            bool isExplicitValue = true;
+            var valueParameter = FormatValue(value, format, culture);
+
+                    string? attributeValue = GetModelStateValue(viewContext, fullName, typeof(string)) as string;
+                    attributeValue ??= useViewData ? EvalString(viewContext, expression, format!) : valueParameter;
+                    tagBuilder.MergeAttribute("value", attributeValue, replaceExisting: isExplicitValue);
+
+
+            string? legendText = null;
+            if (htmlAttributes.TryGetValue("legend", out var legend))
+            {
+                legendText = legend.ToString()!;
+            }
+            string? resolvedLegendText = ResolveLabelText(legendText, modelExplorer, expression);
+            if (resolvedLegendText != null)
+            {
+                tagBuilder.MergeAttribute("legend", resolvedLegendText);
+            }
+
+            AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
+
+            return tagBuilder;
+        }
     }
 }
