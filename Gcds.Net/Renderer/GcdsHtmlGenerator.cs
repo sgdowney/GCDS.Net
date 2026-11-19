@@ -109,7 +109,10 @@ namespace Gcds.Net.Renderer
 
                     string? attributeValue = GetModelStateValue(viewContext, fullName, typeof(string)) as string;
                     attributeValue ??= useViewData ? EvalString(viewContext, expression, format!) : valueParameter;
-                    tagBuilder.MergeAttribute("value", attributeValue, replaceExisting: isExplicitValue);
+                    if (!string.IsNullOrWhiteSpace(attributeValue))
+                    {
+                        tagBuilder.MergeAttribute("value", attributeValue, replaceExisting: isExplicitValue);
+                    }
 
                     break;
             }
@@ -863,10 +866,12 @@ namespace Gcds.Net.Renderer
             bool isExplicitValue = true;
             var valueParameter = FormatValue(value, format, culture);
 
-                    string? attributeValue = GetModelStateValue(viewContext, fullName, typeof(string)) as string;
-                    attributeValue ??= useViewData ? EvalString(viewContext, expression, format!) : valueParameter;
-                    tagBuilder.MergeAttribute("value", attributeValue, replaceExisting: isExplicitValue);
-
+            string? attributeValue = GetModelStateValue(viewContext, fullName, typeof(string)) as string;
+            attributeValue ??= useViewData ? EvalString(viewContext, expression, format!) : valueParameter;
+            if (!string.IsNullOrWhiteSpace(attributeValue))
+            {
+                tagBuilder.MergeAttribute("value", attributeValue, replaceExisting: isExplicitValue);
+            }
 
             string? legendText = null;
             if (htmlAttributes.TryGetValue("legend", out var legend))
