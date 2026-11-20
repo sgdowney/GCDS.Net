@@ -1,0 +1,20 @@
+﻿@model WebAppMvc.Models.GcdsTextareaViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["PageText"]
+    </gcds-text>
+</section>
+<section class="mt-300">
+    <form method="post" id="inputForm" name="inputForm" novalidate>
+        <gcds-error-summary heading="@sharedResource["ErrorSummaryHeading"]"></gcds-error-summary>
+        <gcds-textarea gcds-for="Description" hint="@localizer["DescriptionHint"].Value" form="inputForm" rows="4"></gcds-textarea>
+        <gcds-textarea gcds-for="Comments" form="inputForm" cols="30"></gcds-textarea>
+        <gcds-button button-id="submitButton" value="Continue" type="submit">
+            @localizer["ContinueButtonLabel"]
+        </gcds-button>
+    </form>
+</section>
+
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

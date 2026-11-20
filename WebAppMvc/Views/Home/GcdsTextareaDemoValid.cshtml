@@ -1,0 +1,25 @@
+﻿@model WebAppMvc.Models.GcdsTextareaViewModel
+<section>
+    <gcds-heading tag="h1">@localizer["HeadingText"]</gcds-heading>
+    <gcds-text>
+        @localizer["FormValidMessage"]
+    </gcds-text>
+</section>
+<section>
+    <dl>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+    </dl>
+</section>
+<!-- TODO: Update the date to reflect the page's most recent change. -->
+<gcds-date-modified>2024-08-22</gcds-date-modified>

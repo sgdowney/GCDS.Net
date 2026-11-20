@@ -88,6 +88,15 @@ namespace Gcds.Net.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be greater than or equal to zero..
+        /// </summary>
+        internal static string HtmlHelper_TextAreaParameterOutOfRange {
+            get {
+                return ResourceManager.GetString("HtmlHelper_TextAreaParameterOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ViewData item that has the key &apos;{0}&apos; is of type &apos;{1}&apos; but must be of type &apos;{2}&apos;..
         /// </summary>
         internal static string HtmlHelper_WrongSelectDataType {
