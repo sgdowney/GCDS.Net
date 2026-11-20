@@ -888,5 +888,91 @@ namespace Gcds.Net.Renderer
 
             return tagBuilder;
         }
+
+        public override TagBuilder GenerateTextArea(ViewContext viewContext, ModelExplorer modelExplorer, string expression, int rows, int columns, object htmlAttributes)
+        {
+            ArgumentNullException.ThrowIfNull(viewContext);
+
+            if (rows < 0)
+            {
+                throw new ArgumentOutOfRangeException(nameof(rows), Resources.HtmlHelper_TextAreaParameterOutOfRange);
+            }
+
+            if (columns < 0)
+            {
+                throw new ArgumentOutOfRangeException(
+                    nameof(columns),
+                    Resources.HtmlHelper_TextAreaParameterOutOfRange);
+            }
+
+            var fullName = GcdsNameAndIdProvider.GetFullHtmlFieldName(viewContext, expression);
+            var htmlAttributeDictionary = GetHtmlAttributeDictionaryOrNull(htmlAttributes);
+            if (!IsFullNameValid(fullName, htmlAttributeDictionary))
+            {
+                throw new ArgumentException(
+                    ResourceFormat.FormatHtmlGenerator_FieldNameCannotBeNullOrEmpty(
+                        typeof(IHtmlHelper).FullName,
+                        nameof(IHtmlHelper.Editor),
+                        typeof(IHtmlHelper<>).FullName,
+                        nameof(IHtmlHelper<object>.EditorFor),
+                        "htmlFieldName"),
+                    nameof(expression));
+            }
+
+            viewContext.ViewData.ModelState.TryGetValue(fullName, out var entry);
+
+            var value = string.Empty;
+            if (entry != null && entry.AttemptedValue != null)
+            {
+                value = entry.AttemptedValue;
+            }
+            else if (modelExplorer.Model != null)
+            {
+                value = modelExplorer.Model.ToString();
+            }
+
+            var tagBuilder = new TagBuilder("gcds-textarea");
+            GcdsNameAndIdProvider.GenerateId(viewContext, tagBuilder, "textarea-id", fullName, IdAttributeDotReplacement);
+            tagBuilder.MergeAttributes(htmlAttributeDictionary, replaceExisting: true);
+            if (rows > 0)
+            {
+                tagBuilder.MergeAttribute("rows", rows.ToString(CultureInfo.InvariantCulture), replaceExisting: true);
+            }
+
+            if (columns > 0)
+            {
+                tagBuilder.MergeAttribute(
+                    "cols",
+                    columns.ToString(CultureInfo.InvariantCulture),
+                    replaceExisting: true);
+            }
+
+            if (!string.IsNullOrEmpty(fullName))
+            {
+                tagBuilder.MergeAttribute("name", fullName, replaceExisting: true);
+            }
+
+            string? labelText = null;
+            if (htmlAttributeDictionary.TryGetValue("label", out var label))
+            {
+                labelText = label.ToString()!;
+            }
+            string? resolvedLabelText = ResolveLabelText(labelText, modelExplorer, expression);
+            if (resolvedLabelText != null)
+            {
+                tagBuilder.MergeAttribute("label", resolvedLabelText);
+            }
+
+            //AddPlaceholderAttribute(viewContext.ViewData, tagBuilder, modelExplorer, expression);
+            //AddMaxLengthAttribute(viewContext.ViewData, tagBuilder, modelExplorer, expression);
+            AddValidationAttributes(viewContext, tagBuilder, modelExplorer, expression);
+
+            if (!string.IsNullOrEmpty(value))
+            {
+                tagBuilder.Attributes.Add("value", value);
+            }
+            return tagBuilder;
+        }
+
     }
 }

@@ -176,6 +176,25 @@ namespace WebAppMvc.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult GcdsTextareaDemo()
+        {
+            ConfigureCompactFooter();
+            GcdsTextareaViewModel model = new() { Comments = "This is a comment that was already entered. This is a comment that was already entered. This is a comment that was already entered. This is a comment that was already entered." };
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult GcdsTextareaDemo(GcdsTextareaViewModel model)
+        {
+            ConfigureCompactFooter();
+            if (ModelState.IsValid)
+            {
+                return View("GcdsTextareaDemoValid", model);
+            }
+            return View(model);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
