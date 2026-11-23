@@ -1,5 +1,4 @@
-﻿using Gcds.Net.Models;
-using Gcds.Net.Properties;
+﻿using Gcds.Net.Properties;
 using Gcds.Net.Renderer;
 
 using Microsoft.AspNetCore.Mvc.ModelBinding;
