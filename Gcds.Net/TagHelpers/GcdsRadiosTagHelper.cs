@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-using System.Reflection.Emit;
 using System.Text.Json;
 
 namespace Gcds.Net.TagHelpers

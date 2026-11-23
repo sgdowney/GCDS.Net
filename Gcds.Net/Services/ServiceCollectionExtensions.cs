@@ -1,6 +1,5 @@
 ﻿using Gcds.Net.Renderer;
 
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Gcds.Net.Services
